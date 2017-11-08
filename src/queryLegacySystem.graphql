@@ -1,0 +1,7 @@
+type LegacySystemPayload {
+  users: Json
+}
+
+extend type Query {
+  queryLegacySystem(userId: ID!): LegacySystemPayload
+}

@@ -1,0 +1,5 @@
+type UserInput {
+  id: ID!
+  name: String
+  dateOfBirth: DateTime
+}

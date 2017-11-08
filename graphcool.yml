@@ -25,19 +25,33 @@ functions:
     type: resolver
     schema: src/hello.graphql
 
+  setBirthDate:
+    handler:
+      code: src/setBirthDate.js
+    type: operationBefore
+    operation: User.create
+
+  queryLegacySystem:
+    type: resolver
+    schema: src/queryLegacySystem.graphql
+    handler:
+      webhook:
+        url: http://localhost:3000
+        headers:
+          Content-Type: application/json
+
 
 # Model/Relation permissions are used to limit the API access
-# To take the burden of thinking about those while development, we 
+# To take the burden of thinking about those while development, we
 # preconfigured the wildcard ("*") permission that allows everything
 # Read more here:
 # https://docs-next.graph.cool/reference/auth/authorization/overview-iegoo0heez
 permissions:
 - operation: "*"
 
-  
+
 # Your root tokens used for functions to get full access to the API
 # Read more here:
 # https://docs-next.graph.cool/reference/auth/authentication/authentication-tokens-eip7ahqu5o
 # rootTokens:
 # - mytoken
-
